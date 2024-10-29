@@ -83,3 +83,23 @@
     color: hsl(var(--foreground));
   }
 }
+
+::-webkit-scrollbar {
+  width: 8px; /* Adjust the width as needed */
+}
+
+::-webkit-scrollbar-track {
+  background: #2d2d2d; /* Dark background for the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4a4a4a; /* Darker color for the thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  border: 2px solid #2d2d2d; /* Optional: adds a border to blend with the track */
+}
+
+/* For Firefox */
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #4a4a4a #2d2d2d;
+}

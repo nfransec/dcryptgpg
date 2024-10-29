@@ -1,14 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
-import { User, Folder, Shield, Key, History } from 'lucide-react'
+import { User, Folder, Shield, Key, History, Settings } from 'lucide-react'
 
 const navItems = [
   { icon: Shield, label: 'Encrypt', href: '/encrypt' },
   { icon: Key, label: 'Decrypt', href: '/' },
-  { icon: Folder, label: 'Files', href: '#' },
-  { icon: User, label: 'Profile', href: '#' },
   { icon: History, label: 'Recent', href: '/recents' },
-
 ]
 
 export default function SideNavBar() {

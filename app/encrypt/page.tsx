@@ -32,7 +32,7 @@ export default function EncryptPage() {
   };
 
   return (
-    <div className="p-6 bg-gray-900 min-h-screen rounded-lg shadow-lg">
+    <div className="p-6 bg-gray-900 min-h-screen rounded-lg shadow-lg bg-gray-900]">
       <h1 className="text-2xl font-bold text-emerald-500 mb-4">Encrypt Message</h1>
       <textarea
         className="w-full p-3 mb-4 rounded-md border border-gray-700 bg-gray-900 text-white"
