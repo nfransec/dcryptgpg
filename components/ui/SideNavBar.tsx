@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { User, Folder, Clock, Star, Share2, Shield, Key, Settings, History } from 'lucide-react'
+import { User, Folder, Shield, Key, History } from 'lucide-react'
 
 const navItems = [
   { icon: Shield, label: 'Encrypt', href: '/encrypt' },
@@ -8,8 +8,7 @@ const navItems = [
   { icon: Folder, label: 'Files', href: '#' },
   { icon: User, label: 'Profile', href: '#' },
   { icon: History, label: 'Recent', href: '/recents' },
-//   { icon: Share2, label: 'Shared', href: '#' },
-//   { icon: Settings, label: 'Settings', href: '#' },
+
 ]
 
 export default function SideNavBar() {
