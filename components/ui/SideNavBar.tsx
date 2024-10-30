@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { User, Folder, Shield, Key, History, Settings } from 'lucide-react'
+import { Shield, Key, History } from 'lucide-react'
 
 const navItems = [
   { icon: Shield, label: 'Encrypt', href: '/encrypt' },

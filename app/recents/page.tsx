@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Eye, Copy, Download, EyeOff, Trash } from 'lucide-react';
-import { Button } from "@/components/ui/button";
 import './page.css';
 type DecryptionRecord = {
   input: string;
