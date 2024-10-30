@@ -1,0 +1,65 @@
+/* app/recents/page.css */
+
+body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .container {
+    padding: 16px;
+    min-height: 100vh;
+  }
+  
+  .header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #b3ff00;
+    margin-bottom: 24px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    padding: 12px;
+    border: 1px solid #333;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #2a2a2a;
+    color: #b3ff00;
+  }
+  
+  .table td {
+    background-color: #1a1a1a;
+  }
+  
+  .progress {
+    display: inline-block;
+    width: 100px;
+    height: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: #b3ff00;
+  }
+  
+  .icon-button {
+    background: none;
+    border: none;
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .icon-button:hover {
+    color: #b3ff00;
+  }

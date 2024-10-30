@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Eye, Copy, Download, EyeOff, Trash } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-
+import './page.css';
 type DecryptionRecord = {
   input: string;
   output: string;
@@ -43,48 +43,68 @@ export default function Recents() {
   };
 
   return (
-    <div className="min-h-screen p-8 bg-gray-900">
-      <h1 className="text-3xl font-bold text-emerald-500 mb-6">Recent Decryptions</h1>
-      <div className="space-y-6">
-        {history.map((record, index) => (
-          <div key={index} className="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <div className="flex justify-between items-center">
-              <div>
-                <h3 className="text-xl font-semibold text-emerald-500 mb-2">
+    <div className="min-h-screen bg-gray-900 text-gray-200 p-4 sm:p-6">
+      <h1 className="text-xl sm:text-2xl font-bold text-emerald-400 mb-4 sm:mb-6">Recent Decryptions</h1>
+      <div className="overflow-x-auto">
+        <table className="w-full table-auto border-collapse">
+          <thead>
+            <tr className="bg-gray-800">
+              <th className="p-2 sm:p-4 border-b border-gray-700">Type</th>
+              <th className="p-2 sm:p-4 border-b border-gray-700">Input</th>
+              <th className="p-2 sm:p-4 border-b border-gray-700">Output</th>
+              <th className="p-2 sm:p-4 border-b border-gray-700">Status</th>
+              <th className="p-2 sm:p-4 border-b border-gray-700">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {history.map((record, index) => (
+              <tr key={index} className="hover:bg-gray-800">
+                <td className="p-2 sm:p-4 border-b border-gray-700">
                   {record.type === 'text' ? 'Text Decryption' : 'File Decryption'}
-                </h3>
-                <p className="text-white">
-                  <strong>Input:</strong> {record.filename || 'Custom Input by User'}
-                </p>
-                <p className="text-white">
-                  <strong>Output:</strong> decrypted_message.txt
-                </p>
-              </div>
-              <div className="flex space-x-4">
-                <Button onClick={() => toggleExpand(index)} className="bg-secondary text-black hover:bg-emerald-500 hover:text-white py-2 text-lg">
-                  {expandedIndex === index ? <EyeOff className="mr-2 h-5 w-5" /> : <Eye className="mr-2 h-5 w-5" />} 
-                  {expandedIndex === index ? 'Hide' : 'View'}
-                </Button>
-                <Button onClick={() => navigator.clipboard.writeText(record.output)} className="bg-secondary text-black hover:bg-emerald-500 hover:text-white py-2 text-lg">
-                  <Copy className="mr-2 h-5 w-5" /> Copy
-                </Button>
-                <Button onClick={() => downloadDecryptedMessage(record.output)} className="bg-secondary text-black hover:bg-emerald-500 hover:text-white py-2 text-lg">
-                  <Download className="mr-2 h-5 w-5" /> Download
-                </Button>
-                <Button onClick={() => deleteRecord(index)} className="bg-red-500 text-white hover:bg-red-700 py-2 text-lg">
-                  <Trash className="mr-2 h-5 w-5" /> Delete
-                </Button>
-              </div>
-            </div>
-            {expandedIndex === index && (
-              <div className="mt-4 bg-gray-900 p-4 rounded-lg border border-gray-700">
-                <h4 className="font-medium text-emerald-500">Decrypted Message</h4>
-                <p className="whitespace-pre-wrap text-white">{record.output}</p>
-              </div>
-            )}
-          </div>
-        ))}
+                </td>
+                <td className="p-2 sm:p-4 border-b border-gray-700">
+                  {record.filename || 'Custom Input by User'}
+                </td>
+                <td className="p-2 sm:p-4 border-b border-gray-700">
+                  {record.type === 'file' ? (
+                    <>
+                      <div className="flex flex-row items-center">
+                      decrypted_message.txt
+                      <button
+                        onClick={() => downloadDecryptedMessage(record.output)}
+                        className="ml-2 text-gray-400 hover:text-gray-500"
+                      > 
+                        <Download className="w-5 h-5" />
+                      </button>
+                      </div>
+                    </>
+                    
+                  ) : (
+                    expandedIndex === index ? record.output : '********'
+                  )}
+                </td>
+                <td className="p-2 sm:p-4 border-b border-gray-700">
+                  <div className="w-16 sm:w-24 h-1 bg-gray-700 rounded-full overflow-hidden">
+                    <div className="h-1 bg-emerald-400" style={{ width: '100%' }}></div>
+                  </div>
+                </td>
+                <td className="p-2 sm:p-4 border-b border-gray-700 space-x-1 sm:space-x-2">
+                  <button onClick={() => toggleExpand(index)} className="text-gray-400 hover:text-gray-500">
+                    {expandedIndex === index ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  </button>
+                  <button onClick={() => navigator.clipboard.writeText(record.output)} className="text-gray-400 hover:text-gray-500">
+                    <Copy className="w-5 h-5" />
+                  </button>
+                  <button onClick={() => deleteRecord(index)} className="text-gray-400 hover:text-gray-500">
+                    <Trash className="w-5 h-5" />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
 }
+

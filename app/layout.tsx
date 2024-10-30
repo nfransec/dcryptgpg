@@ -1,24 +1,11 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import SideNavBar from "@/components/ui/SideNavBar";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
-} from '@clerk/nextjs'
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const jakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
@@ -32,17 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${jakartaSans.className} antialiased`}
         >
-          {/* <SignedOut>
-                <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton/>
-          </SignedIn> */}
           <div className="flex bg-[#1c1c28]">
             <SideNavBar />
             <main className="flex-1">
@@ -51,6 +31,5 @@ export default function RootLayout({
           </div>
         </body>
       </html>
-    // </ClerkProvider>
   );
 }
